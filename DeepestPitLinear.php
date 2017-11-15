@@ -39,7 +39,7 @@ class DeepestPitLinear
         $endIndex = $countA;
 
         for ($i = 0; $i < $countA; $i++) {
-            if ($a[$i + 1] >= $a[$i]) {
+            if (isset($a[$i + 1]) && $a[$i + 1] >= $a[$i]) {
                 $startIndex = $i + 1;
             }
             else {
@@ -48,7 +48,7 @@ class DeepestPitLinear
         }
 
         for ($i = $countA - 1; $i >= 0; $i--) {
-            if ($a[$i - 1] >= $a[$i]) {
+            if (isset($a[$i - 1]) && $a[$i - 1] >= $a[$i]) {
                 $endIndex = $i - 1;
             }
             else {
@@ -76,7 +76,7 @@ class DeepestPitLinear
                 }
             }
             else if ($a[$i] > $lowest) {
-                if ($a[$i - 2] > $a[$i - 1]) { // hodnota předcházející pitu je vyšší, takže pit je reálný
+                if (isset($a[$i - 2], $a[$i - 1]) && $a[$i - 2] > $a[$i - 1]) { // hodnota předcházející pitu je vyšší, takže pit je reálný
                     $qValue = $a[$i - 1]; // našli jsme q
 
                     // hledáme konec pitu
@@ -92,7 +92,7 @@ class DeepestPitLinear
                     $newStartIndex = $r;
 
                     // po $rValue následuje stejná hodnota => musíme dál hledat $newStartIndex
-                    if ($a[$r + 1] === $a[$r]) {
+                    if (isset($a[$r + 1]) && $a[$r + 1] === $a[$r]) {
                         while ($newStartIndex <= $countA - 2 && $a[$newStartIndex + 1] >= $a[$newStartIndex]) {
                             $newStartIndex++;
                         }

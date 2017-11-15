@@ -34,5 +34,8 @@ require 'DeepestPitOriginal.php';
 require 'DeepestPitLinear.php';
 require 'DeepestPitLinearFaster.php';
 
+ini_set('display_errors', '1');
+error_reporting(E_ALL);
+
 $deepestPitCalculatorOriginal = new DeepestPitOriginal();
 $deepestPitCalculator = new DeepestPitLinearFaster();
