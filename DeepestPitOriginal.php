@@ -11,41 +11,45 @@
  * We can also define the depth of this pit as the number
  * min{A[P] − A[Q], A[R] − A[Q]}.
  *
- * You should write a Java method (function) deepest_pit(int[] A) which
+ * You should write a Java method (function) $deepestPitCalculatorOriginal->calculate(int[] A) which
  * returns the depth of the deepest pit in array A or -1 if it does not exit.
  *
  * Costraints: N is an integer within the range [1..1,000,000]; each element
  * of array A is an integer within the range [−100,000,000..100,000,000].
  */
 
-function deepest_pit(array $a) {
-    $depth = -1;
+class DeepestPitOriginal
+{
+    public function calculate(array $a) {
+        $depth = -1;
+        $countA = count($a);
 
-    for ($i = 1; $i < count($a) - 1; $i++) {
-        if ($a[$i - 1] > $a[$i] && $a[$i + 1] > $a[$i]) {
-            $q = $i;
+        for ($i = 1; $i < $countA - 1; $i++) {
+            if ($a[$i - 1] > $a[$i] && $a[$i + 1] > $a[$i]) {
+                $q = $i;
 
-            $p = $q;
-            while ($p > 0 && $a[$p-1] > $a[$p]) {
-                $p--;
-            }
+                $p = $q;
+                while ($p > 0 && $a[$p-1] > $a[$p]) {
+                    $p--;
+                }
 
-            $r = $q;
-            while ($r <= count($a)-2 && $a[$r+1] > $a[$r]) {
-                $r++;
-            }
+                $r = $q;
+                while ($r <= $countA-2 && $a[$r+1] > $a[$r]) {
+                    $r++;
+                }
 
-            $z1 = $a[$p] - $a[$q];
-            $z2 = $a[$r] - $a[$q];
+                $z1 = $a[$p] - $a[$q];
+                $z2 = $a[$r] - $a[$q];
 
 //            var_dump('p=' . $p);
 //            var_dump('q=' . $q);
 //            var_dump('r=' . $r);
 //            var_dump('----');
 
-            $depth = max(min([$z1, $z2]), $depth);
+                $depth = max(min([$z1, $z2]), $depth);
+            }
         }
-    }
 
-    return $depth;
+        return $depth;
+    }
 }

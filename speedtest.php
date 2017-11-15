@@ -12,7 +12,7 @@ foreach ([10, 10e2, 10e3, 10e4, 10e5, 10e6, 10e6*2] as $numberCount) {
 
     $startTime = microtime(true);
 
-    deepest_pit($a);
+    $deepestPitCalculatorOriginal->calculate($a);
 
     $endTime = microtime(true);
 
@@ -20,7 +20,7 @@ foreach ([10, 10e2, 10e3, 10e4, 10e5, 10e6, 10e6*2] as $numberCount) {
 
     $startTime = microtime(true);
 
-    deepest_pit_linear_faster($a);
+    $deepestPitCalculator->calculate($a);
 
     $endTime = microtime(true);
 

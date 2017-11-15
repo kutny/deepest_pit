@@ -17,7 +17,7 @@ function generateRandomIntegers($count) {
 function assertSame($pit1, $pit2, array $a) {
     if ($pit1 !== $pit2) {
         echo 'Pits do not equal (' . $pit1 . ' !== ' . $pit2 . ')' . PHP_EOL;
-        echo '$a = ' . stringifyArray($a);
+        echo '$a = ' . stringifyArray($a) . PHP_EOL;
         exit;
     }
 }
@@ -27,9 +27,12 @@ function printLine($string) {
 }
 
 function stringifyArray(array $a) {
-    return '[' . implode(', ', $a) . '];' . PHP_EOL;
+    return '[' . implode(', ', $a) . ']';
 }
 
-require 'deepest_pit.php';
-require 'deepest_pit_linear.php';
-require 'deepest_pit_linear_faster.php';
+require 'DeepestPitOriginal.php';
+require 'DeepestPitLinear.php';
+require 'DeepestPitLinearFaster.php';
+
+$deepestPitCalculatorOriginal = new DeepestPitOriginal();
+$deepestPitCalculator = new DeepestPitLinearFaster();
