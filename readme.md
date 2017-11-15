@@ -21,7 +21,7 @@ php pit.php
 php speedtest.php
 ```
 
-The speed test compares the original algorithm to the new one in terms of processing speed.
+The speed test compares the original algorithm (*DeepestPitOriginal.php*) to the new one (*DeepestPitLinearFaster.php*) in terms of processing speed.
 
 ### Compare both algorithms on random arrays of integers
 
